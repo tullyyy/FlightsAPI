@@ -1,34 +1,22 @@
-import React from 'react' 
-import Data from './Data'
+import React from "react";
+import Data from "./Data";
 
-function Results() { 
+function Results({ flights }) {
+  console.log("flights", flights);
 
-  const flightArr = [ {
-    id: "1",
-    name: "Pencil",
-    price: 1,
-    description: "Perfect for those who can't remember things! 5/5 Highly recommend."
-  },
-  {
-    id: "2",
-    name: "Housing",
-    price: 0,
-    description: "Housing provided for out-of-state students or those who can't commute"
-  }]
+  const resultsData = flights.map(flight => {
+    return (
+      <li key={flight.id}>
+        Departure Time: {flight.dTime}
+        Arrival Time: {flight.aTime}
+        Departure City: {flight.cityFrom}
+        Arrival City: {flight.cityTo}
+        Price: {flight.price}
+      </li>
+    );
+  });
 
-  const resultsData = flightArr.map(result =>  {
-    return <Data key={result.id} name={result.name} description={result.description} />
-  }
-  )
-
-  return ( 
-    <div style={{border:"1px solid #333"}} > 
-      ResultsComponent 
-      {resultsData}
-    </div>
-
-  )
+  return <div style={{ border: "1px solid #333" }}>{resultsData}</div>;
 }
 
-export default Results
-
+export default Results;
