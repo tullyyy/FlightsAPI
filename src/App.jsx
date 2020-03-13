@@ -1,14 +1,20 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 
-class App extends Component {
-  render() {
+import Results from "./components/Results"
+import searchFlights from "./searchFlights"
+
+function App() {
+  useEffect(() => {
+    searchFlights()
+  }, []) 
     return (
-      <div className="App">
+      <div className="App" style={{border: "2px solid #344" }} > 
+        {/* <Results /> */}
         Start Here
-    </div>
+
+      </div>
     );
   }
-}
 
 export default App;
